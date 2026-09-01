@@ -1,0 +1,42 @@
+.cartBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0;
+  border: 2px solid var(--bg);
+  margin: 0;
+  padding: 0.5rem;
+  box-shadow: none;
+  height: fit-content;
+  background-color: var(--bg);
+}
+
+.cartBtn:hover {
+  cursor: pointer;
+  border: 2px solid var(--border);
+}
+
+.cartIconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: var(--accent);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: bold;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border: 2px solid var(--bg);
+}
