@@ -6,9 +6,11 @@
   border-bottom: 1px solid var(--border);
 }
 
-.header > h1 {
+.header > .odinShopLink {
   font-family: var(--mono);
   font-size: 36px;
   margin: 2rem 0;
   text-align: left;
+  text-decoration: none;
+  color: var(--text-h);
 }

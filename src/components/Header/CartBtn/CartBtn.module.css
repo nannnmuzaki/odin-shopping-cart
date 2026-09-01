@@ -3,7 +3,8 @@
   justify-content: center;
   align-items: center;
   flex-grow: 0;
-  border: 2px solid var(--bg);
+  border: none;
+  border-radius: 50%;
   margin: 0;
   padding: 0.5rem;
   box-shadow: none;
@@ -13,7 +14,7 @@
 
 .cartBtn:hover {
   cursor: pointer;
-  border: 2px solid var(--border);
+  background-color: var(--accent-bg);
 }
 
 .cartIconWrapper {

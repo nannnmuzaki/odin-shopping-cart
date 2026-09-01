@@ -1,13 +1,8 @@
-import { Header } from "./components/Header/Header";
-import classes from "./App.module.css";
+import { RouterProvider, createBrowserRouter } from "react-router";
+import { routes } from "./routes";
 
-function App() {
-  return (
-    <>
-      <Header />
-      <main className={classes.main}></main>
-    </>
-  );
+const router = createBrowserRouter(routes);
+
+export default function App() {
+  return <RouterProvider router={router} />;
 }
-
-export default App;
