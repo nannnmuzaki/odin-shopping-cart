@@ -14,7 +14,7 @@
 
 .cartBtn:hover {
   cursor: pointer;
-  background-color: var(--accent-bg);
+  background-color: var(--border);
 }
 
 .cartIconWrapper {
