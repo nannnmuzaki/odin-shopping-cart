@@ -1,6 +1,6 @@
 import { Layout } from "./components/Layout/Layout";
 import { ErrorPage } from "./components/ErrorPage/ErrorPage";
-import { HomePage } from "./pages/HomePage";
+import { HomePage } from "./pages/HomePage/HomePage";
 
 export const routes = [
   {
