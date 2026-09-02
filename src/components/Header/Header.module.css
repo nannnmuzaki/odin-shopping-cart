@@ -2,15 +2,51 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline: 2rem;
   border-bottom: 1px solid var(--border);
 }
 
-.header > .odinShopLink {
+.rightHeader {
+  display: flex;
+  /*justify-content: center;*/
+  align-items: center;
+  gap: 1rem;
+  align-self: stretch;
+  margin-right: 2rem;
+  padding-block: 1rem;
+}
+
+.odinShopLink {
+  color: var(--text-h);
   font-family: var(--mono);
   font-size: 36px;
-  margin: 2rem 0;
   text-align: left;
   text-decoration: none;
+  margin-left: 2rem;
+  padding-block: 1.4rem;
+}
+
+.headerLink {
+  display: flex;
+  align-items: center;
+  height: 100%;
   color: var(--text-h);
+  font-family: var(--mono);
+  font-size: 18px;
+  text-align: left;
+  text-decoration: none;
+  margin-top: 0.2rem;
+  border-bottom: 1px solid var(--bg);
+}
+
+.headerLink:hover {
+  border-bottom: 1px solid var(--text-h);
+}
+
+.divider {
+  align-self: stretch;
+  width: 1px;
+  background-color: var(--border);
+  flex-shrink: 0;
+  margin-right: -0.5rem;
+  /*border-radius: 1rem;*/
 }

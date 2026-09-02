@@ -8,7 +8,16 @@ export function Header() {
       <Link to="/" className={classes.odinShopLink}>
         odin-shop
       </Link>
-      <CartBtn />
+      <div className={classes.rightHeader}>
+        <Link className={classes.headerLink} to="/">
+          Home
+        </Link>
+        <Link className={classes.headerLink} to="/store">
+          Store
+        </Link>
+        <div className={classes.divider}></div>
+        <CartBtn />
+      </div>
     </header>
   );
 }
