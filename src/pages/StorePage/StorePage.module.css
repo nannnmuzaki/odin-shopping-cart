@@ -1,8 +1,8 @@
 .storePage {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  flex-grow: 1;
 }
 
 .storePage > h1 {
@@ -12,4 +12,37 @@
   margin: 0;
   margin-top: 1.5rem;
   margin-left: 2rem;
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  @media (width < 1000px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (width < 500px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  justify-content: center;
+  align-content: start;
+  margin-inline: 1rem;
+  flex-grow: 1;
+}
+
+.loading,
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.loading,
+.error > strong {
+  font-family: var(--mono);
+  font-size: 28px;
+  margin-bottom: 8rem;
 }

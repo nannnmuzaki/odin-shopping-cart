@@ -7,7 +7,6 @@
 
 .rightHeader {
   display: flex;
-  /*justify-content: center;*/
   align-items: center;
   gap: 1rem;
   align-self: stretch;
@@ -23,6 +22,11 @@
   text-decoration: none;
   margin-left: 2rem;
   padding-block: 1.4rem;
+  text-wrap: nowrap;
+
+  @media (max-width: 1024px) {
+    font-size: 24px;
+  }
 }
 
 .headerLink {
@@ -31,11 +35,26 @@
   height: 100%;
   color: var(--text-h);
   font-family: var(--mono);
-  font-size: 18px;
+  font-size: 16px;
   text-align: left;
   text-decoration: none;
   margin-top: 0.2rem;
   border-bottom: 1px solid var(--bg);
+
+  @media (max-width: 1024px) {
+    font-size: 15px;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 14px;
+  }
+}
+
+.headerLink:first-of-type {
+  @media (width < 500px) {
+    display: none;
+    visibility: hidden;
+  }
 }
 
 .headerLink:hover {
