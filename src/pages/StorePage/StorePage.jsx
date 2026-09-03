@@ -1,11 +1,14 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./StorePage.module.css";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
+import { useCallback } from "react";
+import { useOutletContext } from "react-router";
 
-export function StorePage() {
+export const StorePage = React.memo(function StorePage() {
   const [productsData, setProductsData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { setCartItems } = useOutletContext();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -43,6 +46,20 @@ export function StorePage() {
     };
   }, []);
 
+  const handleAddToCart = useCallback(
+    (productId, addQuantity) => {
+      setCartItems((prev) => {
+        if (prev.some((item) => item.id === productId)) {
+          return prev.map((item) =>
+            item.id === productId ? { ...item, quantity: item.quantity + addQuantity } : item,
+          );
+        }
+        return [...prev, { id: productId, quantity: addQuantity }];
+      });
+    },
+    [setCartItems],
+  );
+
   return (
     <section className={classes.storePage}>
       <h1>Products</h1>
@@ -52,8 +69,10 @@ export function StorePage() {
         {!isLoading &&
           !error &&
           productsData.length > 0 &&
-          productsData.map((item) => <ProductCard key={item.id} productData={item} />)}
+          productsData.map((item) => (
+            <ProductCard key={item.id} productData={item} onAddToCart={handleAddToCart} />
+          ))}
       </div>
     </section>
   );
-}
+});
