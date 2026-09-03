@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { CartBtn } from "./CartBtn/CartBtn";
 import classes from "./Header.module.css";
 
-export function Header() {
+export function Header({ cartItems }) {
   return (
     <header className={classes.header}>
       <Link to="/" className={classes.odinShopLink}>
@@ -16,7 +16,7 @@ export function Header() {
           Store
         </Link>
         <div className={classes.divider}></div>
-        <CartBtn />
+        <CartBtn cartItems={cartItems} />
       </div>
     </header>
   );

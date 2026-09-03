@@ -9,7 +9,7 @@ export function Layout() {
 
   return (
     <>
-      <Header />
+      <Header cartItems={cartItems} />
       <main className={classes.main}>
         <Outlet context={{ cartItems, setCartItems }} />
       </main>
