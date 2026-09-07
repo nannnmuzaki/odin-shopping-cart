@@ -17,7 +17,7 @@ export const CartItem = React.memo(function CartItem({ productData, handleRemove
       if (value <= 0) {
         setTimeout(() => {
           handleRemoveItem(productData.id);
-        }, 500);
+        }, 300);
       }
     }
   };
@@ -35,7 +35,7 @@ export const CartItem = React.memo(function CartItem({ productData, handleRemove
       if (prev <= 1) {
         setTimeout(() => {
           handleRemoveItem(productData.id);
-        }, 500);
+        }, 300);
       }
       return prev - 1;
     });
