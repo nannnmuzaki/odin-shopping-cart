@@ -50,7 +50,9 @@ export const ProductCard = React.memo(function ProductCard({ productData, onAddT
 
     if (!isGetProduct) return;
 
-    onAddToCart(productData.id, addQuantity);
+    if (!addQuantity <= 0) {
+      onAddToCart(productData.id, addQuantity);
+    }
   };
 
   const onCloseClick = (e) => {
@@ -74,7 +76,7 @@ export const ProductCard = React.memo(function ProductCard({ productData, onAddT
       {isGetProduct && (
         <>
           <div className={classes.addingWrapper}>
-            <label for="add-quantity">Quantity</label>
+            <label htmlFor="add-quantity">Quantity</label>
             <div className={classes.belowQuantityLabel}>
               <button
                 type="button"

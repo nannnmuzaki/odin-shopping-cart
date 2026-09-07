@@ -17,6 +17,8 @@
 .productsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 1rem 2rem;
 
   @media (width < 1200px) {
     grid-template-columns: repeat(3, 1fr);
@@ -32,7 +34,6 @@
 
   justify-content: center;
   align-content: start;
-  margin-inline: 1rem;
   flex-grow: 1;
 }
 
