@@ -1,4 +1,5 @@
 .cartBtn {
+  color: var(--text-h);
   display: flex;
   justify-content: center;
   align-items: center;
