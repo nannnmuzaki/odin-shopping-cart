@@ -1,44 +1,41 @@
 import { Link } from "react-router";
 import classes from "./CartItem.module.css";
-import React, { useState } from "react";
+import React from "react";
 import { Minus, Plus, Trash2 } from "lucide-react";
 
-export const CartItem = React.memo(function CartItem({ productData, handleRemoveItem }) {
-  const [addQuantity, setAddQuantity] = useState(productData.quantity);
+export const CartItem = React.memo(function CartItem({
+  productData,
+  handleItemQuantityChange,
+  handleRemoveItem,
+}) {
+  const onQuantityInputChange = (e) => {
+    const rawVal = e.target.value;
+    if (rawVal === "") return;
 
-  const onAddQuantityChange = (e) => {
-    const value = Number.parseInt(e.target.value, 10);
-
-    if (Number.isNaN(value)) {
-      setAddQuantity(addQuantity);
-    } else {
-      setAddQuantity(value);
-
+    const value = parseInt(rawVal, 10);
+    if (!isNaN(value)) {
       if (value <= 0) {
-        setTimeout(() => {
-          handleRemoveItem(productData.id);
-        }, 300);
+        handleRemoveItem(productData.id);
+      } else {
+        handleItemQuantityChange(productData.id, value);
       }
     }
   };
 
-  const incrementAddQuantity = (e) => {
+  const incrementQuantity = (e) => {
     e.preventDefault();
-
-    setAddQuantity((prev) => prev + 1);
+    handleItemQuantityChange(productData.id, productData.quantity + 1);
   };
 
-  const decrementAddQuantity = (e) => {
+  const decrementQuantity = (e) => {
     e.preventDefault();
 
-    setAddQuantity((prev) => {
-      if (prev <= 1) {
-        setTimeout(() => {
-          handleRemoveItem(productData.id);
-        }, 300);
-      }
-      return prev - 1;
-    });
+    const newQuantity = productData.quantity - 1;
+    if (newQuantity <= 0) {
+      handleRemoveItem(productData.id);
+    } else {
+      handleItemQuantityChange(productData.id, newQuantity);
+    }
   };
 
   return (
@@ -52,30 +49,37 @@ export const CartItem = React.memo(function CartItem({ productData, handleRemove
       </Link>
 
       <div className={classes.addingWrapper}>
-        <label htmlFor="add-quantity">Quantity</label>
+        <label htmlFor="quantity">Quantity</label>
         <div className={classes.belowQuantityLabel}>
           <button
             type="button"
-            disabled={addQuantity <= 0}
-            onClick={decrementAddQuantity}
+            aria-label="decrease quantity"
+            disabled={productData.quantity <= 0}
+            onClick={decrementQuantity}
             className={classes.quantityBtn}
           >
             <Minus />
           </button>
           <input
             type="number"
-            name="addQuantity"
-            id="add-quantity"
-            onChange={onAddQuantityChange}
-            value={Number(addQuantity)}
+            name="quantity"
+            id="quantity"
+            onChange={onQuantityInputChange}
+            value={Number(productData.quantity)}
             min="0"
             className={classes.quantityInput}
           />
-          <button type="button" onClick={incrementAddQuantity} className={classes.quantityBtn}>
+          <button
+            type="button"
+            aria-label="increase quantity"
+            onClick={incrementQuantity}
+            className={classes.quantityBtn}
+          >
             <Plus />
           </button>
           <button
             type="button"
+            aria-label="remove item"
             onClick={() => handleRemoveItem(productData.id)}
             className={classes.removeBtn}
           >

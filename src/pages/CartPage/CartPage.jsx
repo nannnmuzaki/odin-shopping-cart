@@ -75,6 +75,15 @@ export const CartPage = React.memo(function CartPage() {
     [setCartItems],
   );
 
+  const handleItemQuantityChange = useCallback(
+    (productId, newQuantity) => {
+      setCartItems((prev) =>
+        prev.map((item) => (item.id === productId ? { ...item, quantity: newQuantity } : item)),
+      );
+    },
+    [setCartItems],
+  );
+
   return (
     <section className={classes.cartPage}>
       <h1>Your Cart</h1>
@@ -98,7 +107,12 @@ export const CartPage = React.memo(function CartPage() {
           !error &&
           cartItemsDetail.length > 0 &&
           cartItemsDetail.map((item) => (
-            <CartItem key={item.id} productData={item} handleRemoveItem={handleRemoveItem} />
+            <CartItem
+              key={item.id}
+              productData={item}
+              handleItemQuantityChange={handleItemQuantityChange}
+              handleRemoveItem={handleRemoveItem}
+            />
           ))}
       </div>
       <div className={classes.totalPrice}>
