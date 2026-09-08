@@ -1,0 +1,26 @@
+.homePage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.homePage > h1 {
+  font-family: var(--mono);
+  margin-bottom: 3rem;
+  margin-top: 6rem;
+}
+
+.cta {
+  font-family: var(--mono);
+  color: var(--text-h);
+  text-decoration: none;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0.8rem 1.2rem;
+  margin-top: 2rem;
+}
+
+.cta:hover {
+  background-color: var(--border);
+}
