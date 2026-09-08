@@ -80,6 +80,7 @@ export const ProductCard = React.memo(function ProductCard({ productData, onAddT
             <div className={classes.belowQuantityLabel}>
               <button
                 type="button"
+                aria-label="decrease quantity"
                 disabled={addQuantity <= 0}
                 onClick={decrementAddQuantity}
                 className={classes.quantityBtn}
@@ -95,7 +96,12 @@ export const ProductCard = React.memo(function ProductCard({ productData, onAddT
                 min="0"
                 className={classes.quantityInput}
               />
-              <button type="button" onClick={incrementAddQuantity} className={classes.quantityBtn}>
+              <button
+                type="button"
+                aria-label="increase quantity"
+                onClick={incrementAddQuantity}
+                className={classes.quantityBtn}
+              >
                 <Plus />
               </button>
             </div>
